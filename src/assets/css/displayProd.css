@@ -1,0 +1,14 @@
+.dis-prod{
+    margin-top:30px;
+}
+.dis-prod h2{
+    font-size: max(2vw, 24px);
+    font-weight: 600;
+}
+.dis-lista{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    margin-top: 30px;
+    gap: 30px;
+    row-gap: 50px;
+}
