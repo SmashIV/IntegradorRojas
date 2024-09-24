@@ -18,9 +18,9 @@ function Navbar({setMostrarLogin}) {
             <ul className="navbar-menu">
                 <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Pagina Principal</Link>
                 <a onClick={() => setMenu("categorias")} className={menu === "categorias" ? "active" : ""}>Categorias</a>
-                <a onClick={() => setMenu("contacto")} className={menu === "contacto" ? "active" : ""}>Contacto</a>
+                <Link to="/contacto" onClick={() => setMenu("contacto")} className={menu === "contacto" ? "active" : ""}>Contacto</Link>
                 <a onClick={() => setMenu("carrito")} className={menu === "carrito" ? "active" : ""}>Mis Pedidos</a>
-                <a onClick={() => setMenu("usuario")} className={menu === "usuario" ? "active" : ""}>Usuario</a>
+                <Link to="/usuario" onClick={() => setMenu("usuario")} className={menu === "usuario" ? "active" : ""}>Usuario</Link>
             </ul>
             <div className="navbar-derecha">
                 <i className="ri-search-line"></i>
