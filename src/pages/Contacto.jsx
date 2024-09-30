@@ -2,7 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
-import "mapbox-gl/dist/mapbox-gl.css"
+import castrovirreyna from "../assets/img/castrovirreyna.jpg";
+import santaRosa from "../assets/img/santa_rosa.jpg";
+import fernandini from "../assets/img/fernandini.jpg";
+import "mapbox-gl/dist/mapbox-gl.css";
 import "../assets/css/contacto.css";
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic21hc2hpdiIsImEiOiJjbTFlNmVhd2UwZjZ3MnBxOWdqaHI4N2M1In0.Dnz43U7013-WNeJYu1_D2g';
@@ -80,7 +83,7 @@ function Contacto() {
                                         </p>
                                     </div>
                                     <div className="lista-img">
-                                        <img src="/src/assets/img/castrovirreyna.jpg" alt="" />
+                                        <img src={castrovirreyna} alt="" />
                                     </div>
                                 </article>
                                 <div className="award-icono">
@@ -108,7 +111,7 @@ function Contacto() {
                                         </p>
                                     </div>
                                     <div className="lista-img">
-                                        <img src="/src/assets/img/santa_rosa.jpg" alt="" />
+                                        <img src={santaRosa} alt="" />
                                     </div>
                                 </article>
                                 <div className="award-icono">
@@ -136,7 +139,7 @@ function Contacto() {
                                         </p>
                                     </div>
                                     <div className="lista-img">
-                                        <img src="/src/assets/img/fernandini.jpg" alt="" />
+                                        <img src={fernandini} alt="" />
                                     </div>
                                 </article>
                                 <div className="award-icono">

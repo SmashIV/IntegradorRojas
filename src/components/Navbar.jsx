@@ -2,6 +2,7 @@
 import { useContext, useState } from 'react'
 import '../assets/css/navbar.css'
 import 'remixicon/fonts/remixicon.css'
+import logo from "../assets/img/logo.jpeg";
 import { Link } from 'react-router-dom';
 import { ProdStoreCtx } from '../ctx/ProdStoreCtx';
 function Navbar({setMostrarLogin}) {
@@ -13,7 +14,7 @@ function Navbar({setMostrarLogin}) {
     return (
         <div className='navbar'>
             <a href="#" className='logo'>
-                <Link to='/'><img src="/src/assets/img/logo.jpeg" alt="logo"/><span className='logo-titulo'>Rojas Market</span></Link>
+                <Link to='/'><img src={logo} alt="logo"/><span className='logo-titulo'>Rojas Market</span></Link>
             </a>
             <ul className="navbar-menu">
                 <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Pagina Principal</Link>
