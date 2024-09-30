@@ -26,7 +26,7 @@ function Navbar({setMostrarLogin}) {
             <div className="navbar-derecha">
                 <i className="ri-search-line"></i>
                 <div className="navbar-busqueda">
-                    <Link to='/carrito'><i className="ri-shopping-basket-line"></i></Link>
+                    <Link to='/carrito' onClick={() => setMenu("nada")}><i className="ri-shopping-basket-line"></i></Link>
                     <div className={obtenerTotal()=== 0 ? "" : "punto"}></div>
                 </div>
                 <button onClick={() => setMostrarLogin(true)}>Iniciar Sesión</button>
