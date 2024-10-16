@@ -1,54 +1,111 @@
-.footer{
+.footer {
     color: #323232;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 20px 8px;
-    padding-top: 80px;
+    padding: 40px 20px;
+    padding-top: 60px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
 }
-.footer-contenido{
-    width: 100%;
+
+.footer-contenido {
+    width: 90%;
+    max-width: 1200px; 
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 80px;
+    gap: 40px; 
 }
-.footer-izq, .footer-der, .footer-centro{
+
+.footer-izq, .footer-der, .footer-centro {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 15px;
 }
 
-.footer-izq li, .footer-der li, .footer-centro li{
-    list-style: none;
-    margin-bottom: 10px;
+.footer-izq img {
+    width: 240px; 
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 15px; 
+    filter: grayscale(70%);
+}
+
+.footer-redes i {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    color: black; 
     cursor: pointer;
+    transition: color 0.3s;
 }
 
-.footer-centro h2, .footer-der h2{
+.footer-redes i:hover {
+    color: #837f7f; 
+}
+
+.footer-centro h2, .footer-der h2 {
     color: black;
+    font-size: 18px;
+    font-weight: bold;
 }
-.footer-redes i{
-    width: 40px;
-    margin-right: 15px;
+
+.footer-izq p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6a6a6a; 
 }
-.footer hr{
+
+.footer-centro li {
+    list-style: none;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #323232;
+}
+
+.footer-centro li:hover {
+    color: #d27439; 
+}
+
+.footer-der li {
+    list-style: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #323232;
+}
+
+/* Línea Divisoria */
+.footer hr {
     width: 100%;
-    height: 2px;
-    margin: 20px 0px;
-    background-color: grey;
+    height: 1px;
+    margin: 20px 0;
+    background-color: #dcdcdc;
     border: none;
 }
 
-@media (max-width: 750px){
-    .footer-contenido{
+.footer-copy {
+    text-align: center;
+    font-size: 14px;
+    color: #7a7a7a;
+}
+
+@media (max-width: 750px) {
+    .footer-contenido {
         display: flex;
         flex-direction: column;
-        gap: 35px;
-    }
-    .footer-copy{
+        align-items: center; 
         text-align: center;
+        gap: 25px;
+    }
+
+    .footer-izq, .footer-der, .footer-centro {
+        align-items: center;
+    }
+
+    .footer-izq img {
+        margin-bottom: 10px;
     }
 }

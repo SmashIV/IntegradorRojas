@@ -1,85 +1,102 @@
-.contenedor-usuario{
+.contenedor-usuario {
     display: flex;
-    font-family: Arial, Helvetica, sans-serif ;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px; 
+    overflow: hidden; 
+    margin: 20px; 
 }
 
-.sidebar{
+.sidebar {
     width: 25%;
     background-color: #f5f5f5;
     padding: 20px;
     border-right: 1px solid #ddd;
+    border-top-left-radius: 15px; 
+    border-bottom-left-radius: 15px; 
 }
 
-.sidebar ul{
+.sidebar ul {
     list-style-type: none;
     padding: 0;
 }
 
-.sidebar li{
+.sidebar li {
     margin: 15px 0px;
     font-size: 16px;
     cursor: pointer;
 }
-.sidebar li span{
-    margin-right: 10px;
-}
 
-.formulario-usuario{
+.formulario-usuario {
     width: 75%;
     padding: 20px;
+    background-color: #fafafa; 
+    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px; 
 }
 
-.formulario-usuario h2{
+.formulario-usuario h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-.usuario-form{
+.usuario-form {
     display: flex;
     flex-direction: column;
 }
 
-.usuario-label{
+.usuario-label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px ;
+    margin-bottom: 15px;
     font-size: 14px;
 }
 
-.usuario-input, .usuario-select{
+.usuario-input, .usuario-select {
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px; 
     margin-top: 5px;
     background-color: #f0f5ff;
+    transition: border-color 0.3s; 
 }
 
-.usuario-input[disabled]{
+.usuario-input:hover, .usuario-select:hover {
+    border-color: #007bff; 
+}
+
+.usuario-input[disabled] {
     background-color: #e9ecef;
 }
 
-.edit-formulario{
+.edit-formulario {
     color: #007bff;
     text-decoration: none;
     font-size: 12px;
     margin-top: 5px;
 }
 
-.edit-formulario:hover{
+.edit-formulario:hover {
     text-decoration: underline;
 }
 
-@media(max-width: 768px){
-    .contenedor-usuario{
+@media (max-width: 768px) {
+    .contenedor-usuario {
         flex-direction: column;
     }
-    .sidebar{
+    .sidebar {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid #ddd;
+        border-radius: 0; 
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px; 
     }
-    .formulario-usuario{
+    .formulario-usuario {
         width: 100%;
+        border-radius: 0; 
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
     }
-
 }
