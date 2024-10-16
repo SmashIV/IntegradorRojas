@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 import '../assets/css/home.css'
 import ExpProduc from '../components/ExpProduc'
 import Header from '../components/Header'
