@@ -18,13 +18,12 @@ function Navbar({setMostrarLogin}) {
             </a>
             <ul className="navbar-menu">
                 <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Pagina Principal</Link>
-                <a onClick={() => setMenu("categorias")} className={menu === "categorias" ? "active" : ""}>Categorias</a>
+                <Link to="/categoria" onClick={() => setMenu("categorias")} className={menu === "categorias" ? "active" : ""}>Categorias</Link>
                 <Link to="/contacto" onClick={() => setMenu("contacto")} className={menu === "contacto" ? "active" : ""}>Contacto</Link>
-                <a onClick={() => setMenu("carrito")} className={menu === "carrito" ? "active" : ""}>Mis Pedidos</a>
+                <Link onClick={() => setMenu("carrito")} className={menu === "carrito" ? "active" : ""}>Mis Pedidos</Link>
                 <Link to="/usuario" onClick={() => setMenu("usuario")} className={menu === "usuario" ? "active" : ""}>Usuario</Link>
             </ul>
             <div className="navbar-derecha">
-                <i className="ri-search-line"></i>
                 <div className="navbar-busqueda">
                     <Link to='/carrito' onClick={() => setMenu("nada")}><i className="ri-shopping-basket-line"></i></Link>
                     <div className={obtenerTotal()=== 0 ? "" : "punto"}></div>

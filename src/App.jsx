@@ -9,6 +9,7 @@ import Login from "./components/Login"
 import PagOrden from "./pages/PagOrden"
 import Contacto from "./pages/Contacto"
 import UsuarioView from "./pages/UsuarioView"
+import Categoria from "./pages/Categoria"
 
 const App = () => {
 
@@ -24,7 +25,8 @@ const App = () => {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/orden" element={<PagOrden />} />
           <Route path="/contacto" element={<Contacto />} />
-          <Route path="/usuario" element={<UsuarioView/> } />
+          <Route path="/usuario" element={<UsuarioView />} />
+          <Route path="/categoria" element={<Categoria/>} />
         </Routes>
       </div>
       <Footer/>
