@@ -2,7 +2,7 @@
 import { useContext, useState } from 'react'
 import '../assets/css/navbar.css'
 import 'remixicon/fonts/remixicon.css'
-import logo from "../assets/img/logo1.jpeg";
+import logo from "../assets/img/logorojas_nav.png";
 import { Link } from 'react-router-dom';
 import { ProdStoreCtx } from '../ctx/ProdStoreCtx';
 function Navbar({setMostrarLogin}) {
