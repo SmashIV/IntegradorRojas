@@ -40,7 +40,7 @@
 
 .filtros select:focus{
     outline: none;
-    border-color: #007bff;
+    border-color: tomato;
 }
 
 .dashboard-prod h2{
@@ -54,12 +54,15 @@
     gap: 20px;
 }
 
-.producto-unidad{
+.producto-unidad {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column; 
+    height: 100%;
 }
 
 .producto-unidad:hover{
@@ -71,8 +74,12 @@
     object-fit: contain;
 }
 
-.prod-detalles{
+.prod-detalles {
     padding: 15px;
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
 }
 
 .prod-detalles h3{
@@ -86,10 +93,12 @@
     margin-bottom: 15px;
 }
 
-.prod-comprar{
+.prod-comprar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto; 
+    padding-top: 10px; 
 }
 
 .precio{
@@ -97,7 +106,7 @@
     font-weight: bold;
 }
 .boton-comprar{
-    background-color: #007bff;
+    background-color: tomato;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -107,7 +116,7 @@
 }
 
 .boton-comorar:hover{
-    background-color: #0056b3;
+    background-color:tomato;
 }
 
 .paginacion{
@@ -125,7 +134,7 @@
     transition: background-color 0.3s ease;
 }
 .paginacion-boton.activo-boton{
-    background-color: #007bff;
+    background-color: tomato;
     color: white;
 }
 .paginacion-boton:hover{
