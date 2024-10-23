@@ -1,0 +1,79 @@
+
+.productos-detalle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.productos-detalle img{
+    max-width: 300px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.productos-detalle h1{
+    font-size: 24px;
+    margin: 20px 0 10px;
+    color: #333;
+}
+.productos-detalle .precio{
+    font-size: 28px;
+    font-weight: bold;
+    color: #2d2d2d;
+    margin: 10px 0;
+}
+
+.cantidad{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.cantidad label{
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.cantidad input{
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.productos-detalle p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 600px;
+}
+
+.boton-detalles{
+    background-color: #008f68;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-detalles:hover{
+    background-color: #006f50;
+}

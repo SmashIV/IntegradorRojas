@@ -1,10 +1,11 @@
 import "../assets/css/categoria.css"
 import { useState, useEffect } from "react";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 function Categoria() {
 
     const [lista_productos, setListaProductos] = useState([]);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("https://backend-rojasweb.up.railway.app/display-productos")
@@ -16,6 +17,10 @@ function Categoria() {
                 console.error("error :/", error);
             })
     }, [])
+
+    const handleProductoClick = (id) => {
+        navigate(`/producto/${id}`);
+    }
 
     return (
         <div className="dashboard-prod">
@@ -53,7 +58,7 @@ function Categoria() {
                                 <p>{producto.DESCRIPCION}</p>
                                 <div className="prod-comprar">
                                     <span className="precio">S/.{producto.PRECIOUNITARIO.toFixed(2)}</span>
-                                    <button className="boton-comprar">Comprar</button>
+                                    <button className="boton-comprar" onClick={() => handleProductoClick(producto.IDPRODUCTO)} >Comprar</button>
                                 </div>
                             </div>
                         </div>

@@ -24,17 +24,17 @@ function Carrito() {
                 <br />
                 <hr />
                 {lista_productos.map((item) => {
-                    if (prodCarrito[item._id] > 0) {
+                    if (prodCarrito[item.IDPRODUCTO] > 0) {
                         return (
-                            <div key={item.id}>
+                            <div key={item.IDPRODUCTO}>
                                 <div className="carrito-titulo carrito-item">
-                                    <img src={item.imagen} alt="" />
-                                    <p>{item.nombre}</p>
-                                    <p>S./{item.precio}</p>
-                                    <p>{prodCarrito[item._id]}</p>
-                                    <p>S./{item.precio * prodCarrito[item._id]}</p>
+                                    <img src={item.IMAGEN} alt="" />
+                                    <p>{item.NOMBRE}</p>
+                                    <p>S./{item.PRECIOUNITARIO}</p>
+                                    <p>{prodCarrito[item.IDPRODUCTO]}</p>
+                                    <p>S./{item.PRECIOUNITARIO * prodCarrito[item.IDPRODUCTO]}</p>
                                     <p className="remover" onClick={() => {
-                                        eliminarCarrito(item._id);
+                                        eliminarCarrito(item.IDPRODUCTO);
                                     }}>X</p>
                                 </div>
                                 <hr />
