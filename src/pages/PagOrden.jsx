@@ -14,7 +14,7 @@ function PagOrden() {
     const [apellidos, setApellidos] = useState("");
     const [correoElectronico, setCorreoElectronico] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [distrito, setDistrito] = useState("Ica Centro");
+    const [distrito, setDistrito] = useState("Ica");
     const [numeroCelular, setNumeroCelular] = useState("");
     const [clienteExistente, setClienteExistente] = useState(false);
     const [idCliente, setIdCliente] = useState(null);
@@ -101,7 +101,7 @@ function PagOrden() {
                 pedidoTotal: obtenerTotal() + 2,
                 subtotal: obtenerTotal(),
                 id_cliente: idCliente,
-                id_pago: 2
+                id_pago: 3
             };
 
             const respuestaPedido = await axios.post("https://backend-rojasweb.up.railway.app/crear-pedido", pedido);
@@ -182,9 +182,9 @@ function PagOrden() {
                     <input type="text" placeholder="Dirección" value={direccion} onChange={(e) => setDireccion(e.target.value)} readOnly={clienteExistente} required/>
                     <div className="orden-inputs">
                         <select name="distrito" value={distrito} onChange={(e) => setDistrito(e.target.value)}>
-                            <option value="Ica Centro">Ica Centro</option>
+                            <option value="Ica">Ica</option>
                             <option value="Los Aquijes">Los Aquijes</option>
-                            <option value="Casuarinas">Casuarinas</option>
+                            <option value="Fernandini">Fernandini</option>
                         </select>
                         <input type="text" placeholder="Número de celular" value={numeroCelular} onChange={(e) => setNumeroCelular(e.target.value)} readOnly={clienteExistente} required/>
                     </div>

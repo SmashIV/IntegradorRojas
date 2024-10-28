@@ -9,8 +9,8 @@ export const ProdStoreCtxProvider = (props) => {
     const [lista_productos, setListaProductos] = useState([]);
 
     useEffect(() => {
-        //axios.get("https://backend-rojasweb.up.railway.app/display-productos")
-        axios.get("http://localhost:8081/display-productos")
+        axios.get("https://backend-rojasweb.up.railway.app/display-productos")
+        //axios.get("http://localhost:8081/display-productos")
             .then(response => {
                 setListaProductos(response.data);
             })
