@@ -1,0 +1,59 @@
+.ordenes-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.ordenes-container h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.ordenes-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ordenes-tabla th,
+.ordenes-tabla td {
+    padding: 12px;
+    text-align: left;
+    font-size: 0.95em;
+}
+
+.ordenes-tabla th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    color: #333;
+}
+
+.ordenes-tabla tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.ordenes-tabla tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.detalle-link {
+    color: #d27439;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.detalle-link:hover {
+    text-decoration: underline;
+}
+
+.producto-imagen {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+}

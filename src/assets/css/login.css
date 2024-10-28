@@ -63,3 +63,44 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.password-input{
+    display: flex;
+    gap: 5px;
+}
+.password-input input{
+    flex: 1;
+}
+.password-input button{
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 80px;
+}
+
+.errores {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #f8d7da; 
+    border: 1px solid #f5c6cb; 
+    border-radius: 8px; 
+    color: #721c24; 
+    font-size: 14px;
+    margin-bottom: 15px; 
+}
+
+.errores .error {
+    margin: 0;
+    font-weight: 500;
+}
+
+.errores::before {
+    content: "❌"; 
+    font-size: 18px;
+}

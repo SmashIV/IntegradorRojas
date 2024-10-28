@@ -9,7 +9,8 @@ export const ProdStoreCtxProvider = (props) => {
     const [lista_productos, setListaProductos] = useState([]);
 
     useEffect(() => {
-        axios.get("https://backend-rojasweb.up.railway.app/display-productos")
+        //axios.get("https://backend-rojasweb.up.railway.app/display-productos")
+        axios.get("http://localhost:8081/display-productos")
             .then(response => {
                 setListaProductos(response.data);
             })
@@ -39,6 +40,10 @@ export const ProdStoreCtxProvider = (props) => {
         });
     };
 
+    const vaciarCarrito = () => {
+        setProdCarrito({});
+    };
+
     useEffect(() => {
         console.log(prodCarrito)
     }, [prodCarrito])
@@ -47,8 +52,12 @@ export const ProdStoreCtxProvider = (props) => {
         let montoTotal = 0;
         for (const prodItem in prodCarrito) {
             if (prodCarrito[prodItem] > 0) {
-                let prodInfo = lista_productos.find((producto) => producto.IDPRODUCTO === parseInt(prodItem));
-                montoTotal += prodInfo.PRECIOUNITARIO * prodCarrito[prodItem];
+                const prodInfo = lista_productos.find(
+                    (producto) => producto.IDPRODUCTO === parseInt(prodItem)
+                );
+                if (prodInfo) {
+                    montoTotal += prodInfo.PRECIOUNITARIO * prodCarrito[prodItem];
+                }
             }
         }
         return montoTotal;
@@ -60,7 +69,8 @@ export const ProdStoreCtxProvider = (props) => {
         setProdCarrito,
         agregarCarrito,
         eliminarCarrito,
-        obtenerTotal
+        obtenerTotal,
+        vaciarCarrito
     };
 
     return (

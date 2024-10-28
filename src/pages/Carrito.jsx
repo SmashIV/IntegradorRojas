@@ -1,15 +1,31 @@
 
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import "../assets/css/carrito.css"
 import { ProdStoreCtx } from "../ctx/ProdStoreCtx"
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../ctx/AuthCtx";
 
 function Carrito() {
 
     const { prodCarrito, eliminarCarrito, lista_productos, obtenerTotal } = useContext(ProdStoreCtx);
-    
+    const { usuario } = useContext(AuthContext);
+    const [mensajeError, setMensajeError] = useState("");
     const nav = useNavigate();
 
+    const handleProcederCompra = () => {
+        if (!usuario) {
+            setMensajeError("Debes iniciar sesión o registrarte para proceder a la compra.");
+            return;
+        }
+
+        if (obtenerTotal() === 0) {
+            setMensajeError("El carrito está vacío. Agregue productos para proceder a la compra.");
+            return;
+        }
+        nav('/orden');
+    };
+
+    console.log(prodCarrito);
     return (
         <div className="carrito">
             <div className="carrito-prod">
@@ -62,7 +78,8 @@ function Carrito() {
                             <b>S./{obtenerTotal()=== 0 ? 0 : obtenerTotal() + 2 }</b>
                         </div>
                     </div>
-                    <button onClick={() => {nav('/orden')}}>Proceder a Comprar</button>
+                    {mensajeError && (<p className="mensaje-error">{ mensajeError}</p> )   }
+                    <button onClick={handleProcederCompra}>Proceder a Comprar</button>
                 </div>
                 <div className="carrito-promo">
                     <div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import '../assets/css/productodetalles.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -12,6 +12,7 @@ function ProductoDetalle() {
     const navigate = useNavigate();
     useEffect(() => {
         axios.get(`https://backend-rojasweb.up.railway.app/producto/${id}`)
+        //axios.get(`http://localhost:8081/producto/${id}`)
             .then(res => {
                 setProducto(res.data);
             })

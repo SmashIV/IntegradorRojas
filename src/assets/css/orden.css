@@ -15,7 +15,7 @@
     font-weight: 600;
     margin-bottom: 50px;
 }
-.orden-izq input{
+.orden-izq input, .orden-izq select, .orden-izq option{
     margin-bottom: 15px;
     width: 100%;
     padding: 10px;
@@ -33,4 +33,49 @@
 }
 .form-orden .carrito-total button{
     margin-top: 25px;
+}
+
+.aviso {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #fff3cd; 
+    border: 1px solid #ffeeba; 
+    border-radius: 8px; 
+    color: #856404; 
+    font-size: 14px;
+    margin: 10px 0; 
+}
+
+.aviso p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.aviso::before {
+    content: "⚠️"; 
+    font-size: 18px;
+}
+.mensaje-error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #f8d7da; 
+    border: 1px solid #f5c6cb; 
+    border-radius: 8px; 
+    color: #721c24; 
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.mensaje-error p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.mensaje-error::before {
+    content: "❌"; 
+    font-size: 18px;
 }
