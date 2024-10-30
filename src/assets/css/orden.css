@@ -1,21 +1,25 @@
-.form-orden{
+.form-orden {
     display: flex;
     align-items: start;
     justify-content: space-between;
     gap: 50px;
     margin-top: 100px;
     margin-bottom: 100px;
+    flex-wrap: wrap; 
 }
-.orden-izq{
+
+.orden-izq {
     width: 100%;
     max-width: max(30%, 500px);
 }
-.orden-izq .orden-titulo{
+
+.orden-izq .orden-titulo {
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 50px;
 }
-.orden-izq input, .orden-izq select, .orden-izq option{
+
+.orden-izq input, .orden-izq select, .orden-izq option {
     margin-bottom: 15px;
     width: 100%;
     padding: 10px;
@@ -23,15 +27,18 @@
     border-radius: 4px;
     outline-color: tomato;
 }
-.orden-izq .orden-inputs{
+
+.orden-izq .orden-inputs {
     display: flex;
     gap: 10px;
 }
-.orden-der{
+
+.orden-der {
     width: 100%;
     max-width: max(40%, 600px);
 }
-.form-orden .carrito-total button{
+
+.form-orden .carrito-total button {
     margin-top: 25px;
 }
 
@@ -40,12 +47,12 @@
     align-items: center;
     gap: 10px;
     padding: 10px 15px;
-    background-color: #fff3cd; 
-    border: 1px solid #ffeeba; 
-    border-radius: 8px; 
-    color: #856404; 
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    color: #856404;
     font-size: 14px;
-    margin: 10px 0; 
+    margin: 10px 0;
 }
 
 .aviso p {
@@ -54,18 +61,19 @@
 }
 
 .aviso::before {
-    content: "⚠️"; 
+    content: "⚠";
     font-size: 18px;
 }
+
 .mensaje-error {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 15px;
-    background-color: #f8d7da; 
-    border: 1px solid #f5c6cb; 
-    border-radius: 8px; 
-    color: #721c24; 
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    color: #721c24;
     font-size: 14px;
     margin: 10px 0;
 }
@@ -76,6 +84,55 @@
 }
 
 .mensaje-error::before {
-    content: "❌"; 
+    content: "❌";
     font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .form-orden {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+    }
+
+    .orden-izq, .orden-der {
+        max-width: 100%; 
+    }
+
+    .orden-izq .orden-inputs {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .orden-izq .orden-titulo {
+        font-size: 24px;
+        margin-bottom: 20px; 
+    }
+
+    .orden-izq input, .orden-izq select, .orden-izq option {
+        font-size: 14px;
+        padding: 8px; 
+    }
+
+    .form-orden .carrito-total button {
+        width: 100%; 
+        padding: 10px; 
+        font-size: 16px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .orden-izq .orden-titulo {
+        font-size: 20px; 
+    }
+
+    .orden-izq input, .orden-izq select, .orden-izq option {
+        font-size: 12px; 
+        padding: 6px; 
+    }
+
+    .form-orden .carrito-total button {
+        font-size: 14px; 
+        padding: 8px; 
+    }
 }

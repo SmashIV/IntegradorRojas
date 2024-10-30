@@ -1,25 +1,51 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react"
-import "../assets/css/displayProd.css"
-import { ProdStoreCtx } from "../ctx/ProdStoreCtx"
-import Producto from "./Producto"
-function DisplayProd({categorias}) {
-    
-    const {lista_productos} = useContext(ProdStoreCtx)
-    
+import { useEffect, useState, useRef } from "react";
+import "../assets/css/displayProd.css";
+import Producto from "./Producto";
+import axios from 'axios';
+function DisplayProd() {
+    const [productos, setProductos] = useState([]);
+    const carruselRef = useRef(null);
+
+    useEffect(() => {
+        axios.get("https://backend-rojasweb.up.railway.app/random-products")
+            .then(response => {
+                setProductos(response.data);
+            })
+            .catch(error => {
+                console.error("Error al obtener productos:", error);
+            });
+    }, []);
+
+    const desplazarCarrusel = (direccion) => {
+        const carrusel = carruselRef.current;
+        const desplazamiento = direccion === 'prev' ? -carrusel.offsetWidth : carrusel.offsetWidth;
+        carrusel.scrollBy({ left: desplazamiento, behavior: 'smooth' });
+        setTimeout(() => {
+            if (direccion === 'sig' && carrusel.scrollLeft + carrusel.offsetWidth >= carrusel.scrollWidth) {
+                carrusel.scrollLeft = 0;
+            } else if (direccion === 'prev' && carrusel.scrollLeft === 0) {
+                carrusel.scrollLeft = carrusel.scrollWidth;
+            }
+        }, 500);
+    };
+
     return (
         <div className="dis-prod" id="dis-prod">
             <h2>Productos Recomendados</h2>
-            <div className="dis-lista">
-                {lista_productos.map((prod, index) => {
-                    if (categorias ==="Todos los productos" || categorias===prod.categoria) {
-                        return <Producto key={index} id={prod._id} nombre={prod.nombre} descripcion={prod.descripcion} precio={prod.precio} imagen={prod.imagen}/>
-                    }
-                }
-                )}
+            <div className="contenedor-carrusel">
+                <button className="prev" onClick={() => desplazarCarrusel('prev')}>&#10094;</button>
+                <div className="carrusel" ref={carruselRef}>
+                    {productos.concat(productos).map((prod, index) => (
+                        <div className="producto-carrusel" key={index}>
+                            <Producto id={prod.IDPRODUCTO} nombre={prod.NOMBRE} precio={prod.PRECIOUNITARIO} descripcion={prod.DESCRIPCION} imagen={prod.IMAGEN} />
+                        </div>
+                    ))}
+                </div>
+                <button className="sig" onClick={() => desplazarCarrusel('sig')}>&#10095;</button>
             </div>
         </div>
-    )
+    );
 }
 
-export default DisplayProd
+export default DisplayProd;

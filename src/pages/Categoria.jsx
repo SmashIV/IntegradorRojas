@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 function Categoria() {
 
     const [lista_productos, setListaProductos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Ninguna");
+    const [ordenPrecio, setOrdenPrecio] = useState("");
+    const [ordenNombre, setOrdenNombre] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -12,6 +16,9 @@ function Categoria() {
         //axios.get("http://localhost:8081/display-productos")
             .then(response => {
                 setListaProductos(response.data);
+                const categoriasUnicas = [...new Set(response.data.map(producto => producto.CATEGORIA_NOMBRE))];
+                setCategorias(categoriasUnicas);
+
             })
             .catch(error => {
                 console.error("error :/", error);
@@ -22,47 +29,85 @@ function Categoria() {
         navigate(`/producto/${id}`);
     }
 
+    const handleCategoriaChange = (e) => {
+        setCategoriaSeleccionada(e.target.value);
+    }
+
+    const handlePrecioChange = (e) => {
+        setOrdenPrecio(e.target.value);
+        setOrdenNombre("Seleccionar");
+    }
+
+    const handleNombreChange = (e) => {
+        setOrdenNombre(e.target.value);
+        setOrdenPrecio("Seleccionar");
+    }
+
+    const filtrarProductos = () => {
+        let productosFiltrados = [...lista_productos];
+
+        if (categoriaSeleccionada !== "Ninguna") {
+            productosFiltrados = productosFiltrados.filter(producto => producto.CATEGORIA_NOMBRE === categoriaSeleccionada);
+        }
+
+        if (ordenPrecio === "Menor") {
+            productosFiltrados.sort((a, b) => a.PRECIOUNITARIO - b.PRECIOUNITARIO);
+        } else if (ordenPrecio === "Mayor") {
+            productosFiltrados.sort((a, b) => b.PRECIOUNITARIO - a.PRECIOUNITARIO);
+        }
+
+        if (ordenNombre === "A-Z") {
+            productosFiltrados.sort((a, b) => a.NOMBRE.localeCompare(b.NOMBRE));
+        } else if (ordenNombre === "Z-A") {
+            productosFiltrados.sort((a, b) => b.NOMBRE.localeCompare(a.NOMBRE));
+        }
+
+        return productosFiltrados;
+    };
+
+
     return (
         <div className="dashboard-prod">
             <div className="filtro-contenedor">
                 <div className="filtro-info">
-                    <h2>{lista_productos.length} resultados</h2>
+                    <h2>{filtrarProductos().length} resultados</h2>
                 </div>
                 <div className="filtros">
                     <span className="filtro-label">Categorias</span>
-                    <select>
+                    <select value={categoriaSeleccionada} onChange={handleCategoriaChange}>
                         <option value="Ninguna">Ninguna</option>
-                        <option value="Bebidas">Bebidas</option>
-                        <option value="Carnes">Carnes</option>
+                        {categorias.map((categoria, index) => (
+                            <option key={index} value={categoria}>{categoria}</option>
+                        ))}
                     </select>
                     <span className="filtro-label">Ordenar por Precio</span>
-                    <select>
-                        <option value="Lo más vendido">Lo más vendido</option>
+                    <select value={ordenPrecio} onChange={handlePrecioChange}>
+                        <option value="">Seleccionar</option>
                         <option value="Menor">Precio: Menor a Mayor</option>
                         <option value="Mayor">Precio: Mayor a Menor</option>
                     </select>
                     <span className="filtro-label">Ordenar por Nombre</span>
-                    <select>
+                    <select value={ordenNombre} onChange={handleNombreChange}>
+                        <option value="">Seleccionar</option>
                         <option value="A-Z">A-Z</option>
                         <option value="Z-A">Z-A</option>
                     </select>
                 </div>
             </div>
             <div className="producto-grid">
-                { 
-                    lista_productos.map((producto) => (
-                        <div key={producto.IDPRODUCTO} className="producto-unidad">
-                            <img src={producto.IMAGEN} alt={producto.NOMBRE} />
-                            <div className="prod-detalles">
-                                <h3>{producto.NOMBRE}</h3>
-                                <p>{producto.DESCRIPCION}</p>
-                                <div className="prod-comprar">
-                                    <span className="precio">S/.{producto.PRECIOUNITARIO.toFixed(2)}</span>
-                                    <button className="boton-comprar" onClick={() => handleProductoClick(producto.IDPRODUCTO)} >Comprar</button>
-                                </div>
+                {filtrarProductos().map((producto) => (
+                    <div key={producto.IDPRODUCTO} className="producto-unidad">
+                        <img src={producto.IMAGEN} alt={producto.NOMBRE} />
+                        <div className="prod-detalles">
+                            <h3>{producto.NOMBRE}</h3>
+                            <p>{producto.DESCRIPCION}</p>
+                            <div className="prod-comprar">
+                                <span className="precio">S/.{producto.PRECIOUNITARIO.toFixed(2)}</span>
+                                <button className="boton-comprar" onClick={() => handleProductoClick(producto.IDPRODUCTO)}>Comprar</button>
                             </div>
                         </div>
-                    ))}
+                    </div>
+                ))}
             </div>
             <div className="paginacion">
                 <button className="paginacion-boton">&laquo;</button>

@@ -1,14 +1,12 @@
-/* Estructura general y tipografía */
+
 .contacto-view {
     font-family: 'Arial', sans-serif;
     color: #000;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: #f0f0f0;
 }
-
-/* Encabezado */
 .contacto-header {
     background-color: #ffffff;
     padding: 20px;
@@ -44,7 +42,6 @@
     border-bottom: 2px solid #ff6f61;
 }
 
-/* Contenido principal */
 .contacto-main {
     padding: 20px;
     flex: 1;
@@ -60,7 +57,6 @@
     font-size: 1.2rem;
 }
 
-/* Contenedor principal con lista y mapa */
 .contacto-contenedor {
     display: flex;
     gap: 30px;
@@ -74,7 +70,6 @@
     flex-direction: column;
 }
 
-/* Lista de locales */
 .indiv-lista {
     list-style: none;
     padding: 0;
@@ -209,18 +204,66 @@
     background-color: #e05a4f;
 }
 
-/* Estilo responsive */
 @media (max-width: 768px) {
+    .contacto-titulo h1 {
+        font-size: 1.5rem;
+    }
+
+    .contacto-main p {
+        font-size: 1rem;
+    }
+
     .contacto-contenedor {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .lista-articulo {
         flex-direction: column;
     }
 
-    .lista-contenedor, .mapa-contenedor {
+    .lista-info {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .lista-img img {
         width: 100%;
-        max-height: none;
+        height: auto;
+    }
+
+    .mapa-contenedor {
+        min-height: 300px;
     }
 
     .tab-bar-movil {
         display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-titulo h1 {
+        font-size: 1.2rem;
+    }
+
+    .contacto-main p {
+        font-size: 0.9rem;
+    }
+
+    .lista-info-texto {
+        font-size: 1.2rem;
+    }
+
+    .lista-calificacion {
+        font-size: 0.9rem;
+    }
+
+    .lista-descripcion {
+        font-size: 0.9rem;
+    }
+
+    .tab-lista {
+        font-size: 1rem;
+        padding: 8px 15px;
     }
 }

@@ -119,7 +119,7 @@ function PagOrden() {
 
 
             vaciarCarrito();
-            navigate('/')
+            navigate('/pedidos');
 
         } catch (error) {
             console.error("Error ", error)
