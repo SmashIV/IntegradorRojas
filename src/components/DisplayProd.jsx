@@ -8,7 +8,7 @@ function DisplayProd() {
     const carruselRef = useRef(null);
 
     useEffect(() => {
-        axios.get("https://backend-rojasweb.up.railway.app/random-products")
+        axios.get("https://backend-rojasweb.up.railway.app/random-productos")
             .then(response => {
                 setProductos(response.data);
             })
@@ -27,7 +27,7 @@ function DisplayProd() {
             } else if (direccion === 'prev' && carrusel.scrollLeft === 0) {
                 carrusel.scrollLeft = carrusel.scrollWidth;
             }
-        }, 500);
+        }, 500); 
     };
 
     return (
