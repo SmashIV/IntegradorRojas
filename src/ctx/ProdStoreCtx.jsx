@@ -3,10 +3,11 @@ import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
 
 export const ProdStoreCtx = createContext(null);
-
+    
 export const ProdStoreCtxProvider = (props) => {
     const [prodCarrito, setProdCarrito] = useState({});
     const [lista_productos, setListaProductos] = useState([]);
+    const [descuento, setDescuento] = useState({});
 
     useEffect(() => {
         axios.get("https://backend-rojasweb.up.railway.app/display-productos")
@@ -48,21 +49,29 @@ export const ProdStoreCtxProvider = (props) => {
         console.log(prodCarrito)
     }, [prodCarrito])
 
-    const obtenerTotal = () => {
-        let montoTotal = 0;
-        for (const prodItem in prodCarrito) {
-            if (prodCarrito[prodItem] > 0) {
-                const prodInfo = lista_productos.find(
-                    (producto) => producto.IDPRODUCTO === parseInt(prodItem)
-                );
-                if (prodInfo) {
-                    montoTotal += prodInfo.PRECIOUNITARIO * prodCarrito[prodItem];
-                }
+    const aplicarDescuento = (id_producto, nuevo_precio) => {
+        setDescuento((prev) => ({
+        ...prev,
+        [id_producto]: nuevo_precio
+    }))
+}
+
+const obtenerTotal = () => {
+    let montoTotal = 0;
+    for (const prodItem in prodCarrito) {
+        if (prodCarrito[prodItem] > 0) {
+            const prodInfo = lista_productos.find(
+                (producto) => producto.IDPRODUCTO === parseInt(prodItem)
+            );
+            if (prodInfo) {
+                const precioConDescuento = descuento[prodItem] || prodInfo.PRECIOUNITARIO;
+                montoTotal += precioConDescuento * prodCarrito[prodItem];
             }
         }
-        return montoTotal;
     }
-
+    return montoTotal;
+}
+    
     const valorContext = {
         lista_productos,
         prodCarrito,
@@ -70,7 +79,9 @@ export const ProdStoreCtxProvider = (props) => {
         agregarCarrito,
         eliminarCarrito,
         obtenerTotal,
-        vaciarCarrito
+        vaciarCarrito,
+        aplicarDescuento,
+        descuento
     };
 
     return (

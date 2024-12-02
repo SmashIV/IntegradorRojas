@@ -12,11 +12,11 @@ function Producto({ id, nombre, precio, descripcion, imagen }) {
             <div className="contenedor-img">
                 <img className='prod-img' src={imagen} alt="" />
                 {
-                    !prodCarrito[id] ? <img className='agregar' onClick={ () => agregarCarrito(id)} src={img.boton_blanco} alt="" /> : 
+                    !prodCarrito[id] ? <img className='agregar' onClick={ () => agregarCarrito(id, 1)} src={img.boton_blanco} alt="" /> : 
                         <div className='prod-contador'>
                             <img onClick={() => eliminarCarrito(id)} src={img.boton_rojo} alt="" />
                             <p>{prodCarrito[id]}</p>
-                            <img onClick={() => agregarCarrito(id)} src={img.boton_verde} alt="" />
+                            <img onClick={() => agregarCarrito(id, 1)} src={img.boton_verde} alt="" />
                         </div>
                 }
             </div>

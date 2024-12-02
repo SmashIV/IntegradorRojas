@@ -81,6 +81,24 @@
     border: none;
     color: white;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.carrito .precio-original {
+    text-decoration: line-through;
+    color: red;
+    margin-right: 10px;
+}
+
+.carrito .precio-descuento {
+    color: green;
+    font-weight: bold;
+}
+
+.carrito .mensaje-promocion {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 @media (max-width:750px){
