@@ -101,7 +101,8 @@ function PagOrden() {
                 pedidoTotal: obtenerTotal() + 2,
                 subtotal: obtenerTotal(),
                 id_cliente: idCliente,
-                id_pago: 3
+                id_pago: 3,
+                correoElectronico: usuario.CORREOELECTRONICO
             };
 
             const respuestaPedido = await axios.post("https://backend-rojasweb.up.railway.app/crear-pedido", pedido);
@@ -112,7 +113,10 @@ function PagOrden() {
                 fechaPago: formatoFecha(new Date()),
                 identificadorTransaccion: detallesTransaccion.id,
                 id_pedido: idPedido,
-                id_producto: idProducto
+                id_producto: idProducto,
+                pedidoTotal: pedido.pedidoTotal,
+                subtotal: pedido.subtotal,
+                correoElectronico: pedido.correoElectronico
             }));
 
             await axios.post("https://backend-rojasweb.up.railway.app/crear-detalle-pedido", detallePedidos);
