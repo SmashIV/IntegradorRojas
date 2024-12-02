@@ -50,6 +50,11 @@ function UsuarioView() {
         if (!nombres || !apellidos || !direccion || !numeroCelular) {
             erroresTemp.push("Todos los campos son obligatorios");
         }
+
+        if (numeroCelular.length !== 9 || !/^\d+$/.test(numeroCelular)) {
+            erroresTemp.push("El número de celular debe tener 9 digitos o solo contener números");
+        }
+
         if (erroresTemp.length > 0) {
             setErrores(erroresTemp);
             return;
@@ -87,6 +92,27 @@ function UsuarioView() {
 
     }
 
+    const handleNombresChange = (e) => {
+        const valor = e.target.value;
+        if (/^[a-zA-Z\s]*$/.test(valor)) {
+            setNombres(valor);
+        }
+    }
+
+    const handleApellidosChange = (e) => {
+        const valor = e.target.value;
+        if (/^[a-zA-Z\s]*$/.test(valor)) {
+            setApellidos(valor);
+        }
+    }
+
+    const handleNumeroChange = (e) => {
+        const valor = e.target.value;
+        if (/^\d{0,9}$/.test(valor)) {
+            setNumeroCelular(valor);
+        }
+    }
+
     return (
         <div className="contenedor-usuario">
             <div className="sidebar">
@@ -114,11 +140,11 @@ function UsuarioView() {
                         )}
                     <label className='usuario-label'>
                         <span>Nombres</span>
-                        <input className='usuario-input' type="text" placeholder="Ingrese sus nombres" value={nombres} onChange={(e) => setNombres(e.target.value)} required/>
+                        <input className='usuario-input' type="text" placeholder="Ingrese sus nombres" value={nombres} onChange={handleNombresChange} required/>
                     </label>
                     <label className='usuario-label'>
                         <span>Apellidos</span>
-                        <input className='usuario-input' type="text" placeholder="Ingrese sus Apellidos" value={apellidos} onChange={(e) => setApellidos(e.target.value)} required/>
+                        <input className='usuario-input' type="text" placeholder="Ingrese sus Apellidos" value={apellidos} onChange={handleApellidosChange} required/>
                     </label>
                     <label className='usuario-label'>
                         <span>Dirección</span>
@@ -136,7 +162,7 @@ function UsuarioView() {
                     </label>
                     <label className='usuario-label'>
                         <span>Numero de celular</span>
-                        <input className='usuario-input' type="text" placeholder="Agregar Numero" value={numeroCelular} onChange={(e) => setNumeroCelular(e.target.value)}  required/>
+                        <input className='usuario-input' type="text" placeholder="Agregar Numero" value={numeroCelular} onChange={handleNumeroChange}  required/>
                     </label>
                     <button className='btn-actualizar'>Actualizar</button>
                 </form>

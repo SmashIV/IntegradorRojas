@@ -9,6 +9,7 @@ import { AuthContext } from '../ctx/AuthCtx';
 function Navbar({setMostrarLogin}) {
 
     const [menu, setMenu] = useState("home");
+    const [menuAbierto, setMenuAbierto] = useState(false);
     const { obtenerTotal } = useContext(ProdStoreCtx);
     const { usuario, cerrarSesion } = useContext(AuthContext);
     const location = useLocation();
@@ -29,16 +30,20 @@ function Navbar({setMostrarLogin}) {
         }
     }, [location]);
 
+    const toggleMenu = () => {
+        setMenuAbierto(!menuAbierto );
+    }
+
 
     return (
         <div className='navbar'>
             <Link to='/' className='logo'><img src={logo} alt="logo"/></Link>
-            <ul className="navbar-menu">
-                <Link to="/"  className={menu === "home" ? "active" : ""}>Pagina Principal</Link>
-                <Link to="/categoria" className={menu === "categorias" ? "active" : ""}>Categorias</Link>
-                <Link to="/contacto" className={menu === "contacto" ? "active" : ""}>Contacto</Link>
-                <Link to="/pedidos"  className={menu === "pedidos" ? "active" : ""}>Mis Pedidos</Link>
-                <Link to="/usuario" className={menu === "usuario" ? "active" : ""}>Usuario</Link>
+            <ul className={`navbar-menu ${menuAbierto ? 'abierto' : ''}`}>
+                <Link to="/"  className={menu === "home" ? "active" : ""} onClick={toggleMenu}>Pagina Principal</Link>
+                <Link to="/categoria" className={menu === "categorias" ? "active" : "" } onClick={toggleMenu}>Categorias</Link>
+                <Link to="/contacto" className={menu === "contacto" ? "active" : ""} onClick={toggleMenu}>Contacto</Link>
+                <Link to="/pedidos"  className={menu === "pedidos" ? "active" : ""} onClick={toggleMenu}>Mis Pedidos</Link>
+                <Link to="/usuario" className={menu === "usuario" ? "active" : ""} onClick={toggleMenu}>Usuario</Link>
             </ul>
             <div className="navbar-derecha">
                 <div className="navbar-busqueda">
@@ -49,6 +54,9 @@ function Navbar({setMostrarLogin}) {
                     usuario ? (<button onClick={cerrarSesion}>Cerrar Sesión</button>)
                         : (<button onClick={() => setMostrarLogin(true)}>Iniciar Sesión</button>)
                 }
+            </div>
+            <div className="navbar-toggle" onClick={toggleMenu}>
+                <i className='ri-menu-line'></i>
             </div>
         </div>
     )
