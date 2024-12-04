@@ -79,7 +79,7 @@ function Contacto() {
                                             </span>
                                         </p>
                                         <p className='lista-descripcion'>
-                                            El local se encuentra en ...... Calle ......., en este establecimiento contamos con ....... y .........
+                                            El local se encuentra en Prolongacion Castrovirreyna 251, Ica 11002, establecimiento espaciosos con los mejores precios.
                                         </p>
                                     </div>
                                     <div className="lista-img">
@@ -107,7 +107,7 @@ function Contacto() {
                                             </span>
                                         </p>
                                         <p className='lista-descripcion'>
-                                            El local se encuentra en ...... Calle ......., en este establecimiento contamos con ....... y .........
+                                            El local se encuentra en LOS DIAMANTES K-5 SANTA ROSA DE PALMAR.
                                         </p>
                                     </div>
                                     <div className="lista-img">
@@ -135,7 +135,7 @@ function Contacto() {
                                             </span>
                                         </p>
                                         <p className='lista-descripcion'>
-                                            El local se encuentra en ...... Calle ......., en este establecimiento contamos con ....... y .........
+                                            El local se encuentra en Juan Pablo Fernandini 290, Ica, Peru, establecimiento moderno y bien equipado.
                                         </p>
                                     </div>
                                     <div className="lista-img">
